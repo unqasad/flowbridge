@@ -33,15 +33,18 @@
 <body>
   <div class="page">
     <header class="nav">
-      <div class="brand"><span class="green">Flow</span><span class="purple">Bridge</span></div>
-      <nav class="menu">
-        <a href="/index.html">Home</a>
-        <a href="/resources/" class="{% if page.collection == 'resources' %}active{% endif %}">Resources</a>
-        <a href="/insights/" class="{% if page.collection == 'insights' %}active{% endif %}">Insights</a>
-        <a href="/services.html">Services</a>
-        <a href="/about.html">About</a>
-      </nav>
-    </header>
+  <div class="brand">
+    <span class="green">Flow</span><span class="purple">Bridge</span>
+  </div>
+
+  <nav class="menu">
+    <a href="{{ '/index.html' | relative_url }}">Home</a>
+    <a href="{{ '/insights/' | relative_url }}">Insights</a>
+    <a href="{{ '/resources/' | relative_url }}" class="active">Resources</a>
+    <a href="{{ '/services.html' | relative_url }}">Services</a>
+    <a href="{{ '/about.html' | relative_url }}">About</a>
+  </nav>
+</header>
     <main class="card">
       {{ content }}
     </main>
