@@ -1,0 +1,107 @@
+media:
+  - name: images
+    label: Images
+    input: assets/images
+    output: /assets/images
+    categories: [image]
+    rename: true
+  - name: downloads
+    label: Downloads
+    input: downloads
+    output: /downloads
+    categories: [document]
+    rename: false
+
+content:
+  - name: resources
+    label: Resources
+    type: collection
+    path: _resources
+    filename: "{fields.title}.md"
+    view:
+      fields: [title, resource_type, date]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Publish date
+        type: date
+        required: true
+      - name: category
+        label: Category
+        type: string
+      - name: resource_type
+        label: Resource type
+        type: select
+        options:
+          values: [post, ebook]
+      - name: cover_image
+        label: Cover image
+        type: image
+        options:
+          media: images
+      - name: excerpt
+        label: Short excerpt
+        type: text
+      - name: file_label
+        label: Download button label
+        type: string
+      - name: file_url
+        label: Download file
+        type: file
+        options:
+          media: downloads
+      - name: body
+        label: Content
+        type: rich-text
+        options:
+          format: html
+          media: images
+          switcher: true
+
+  - name: insights
+    label: Insights
+    type: collection
+    path: _insights
+    filename: "{fields.title}.html"
+    view:
+      fields: [title, insight_type, date]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Publish date
+        type: date
+        required: true
+      - name: insight_type
+        label: Insight type
+        type: select
+        options:
+          values: [Landing Page, Offer Page, Insight]
+      - name: cover_image
+        label: Cover image
+        type: image
+        options:
+          media: images
+      - name: excerpt
+        label: Short excerpt
+        type: text
+      - name: body
+        label: Page content
+        type: rich-text
+        options:
+          format: html
+          media: images
+          switcher: true
+
+settings:
+  commit:
+    templates:
+      create: "Create {path} via Pages CMS"
+      update: "Update {path} via Pages CMS"
+      delete: "Delete {path} via Pages CMS"
+      rename: "Rename {oldPath} to {newPath} via Pages CMS"
