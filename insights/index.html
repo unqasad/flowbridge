@@ -1,0 +1,74 @@
+---
+layout: null
+title: Insights
+permalink: /insights/
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Insights - FlowBridge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--text:#f4f4f8;--muted:rgba(255,255,255,.78);--green:#a8f03d;--purple:#aa78ff;--nav:rgba(13,10,32,.78);--soft:rgba(255,255,255,.12)}
+    body{font-family:"Inter",sans-serif;background:linear-gradient(180deg,#02030b 0%, #04061a 45%, #02030b 100%);color:var(--text);padding:22px}
+    .page{max-width:1280px;margin:0 auto}.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 24px;margin-bottom:30px;border-radius:24px;background:var(--nav);border:1px solid rgba(255,255,255,.10)}
+    .brand{font-size:22px;font-weight:800;letter-spacing:-.03em}.green{color:var(--green)}.purple{color:var(--purple)}
+    .menu{display:flex;gap:16px;flex-wrap:wrap}.menu a{text-decoration:none;color:rgba(255,255,255,.88);font-size:15px;font-weight:600;padding:10px 14px;border-radius:999px}.menu a.active,.menu a:hover{background:rgba(255,255,255,.06);color:#fff}
+    .hero,.card{padding:34px;border-radius:32px;background:linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.03)), linear-gradient(180deg, rgba(22,18,52,.84), rgba(11,14,34,.92));border:1px solid var(--soft);box-shadow:0 18px 48px rgba(0,0,0,.24)}
+    .hero{margin-bottom:24px}.eyebrow{display:inline-flex;padding:8px 14px;border-radius:999px;background:linear-gradient(180deg, rgba(168,240,61,.12), rgba(170,120,255,.12));border:1px solid rgba(168,240,61,.22);color:#d5f7a4;font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-bottom:16px}
+    h1{font-size:clamp(42px,5vw,74px);line-height:.96;letter-spacing:-.06em;margin-bottom:16px}
+    .lead{max-width:760px;color:var(--muted);font-size:18px;line-height:1.8}
+    .section-title{font-size:24px;letter-spacing:-.03em;margin:10px 0 18px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .item{display:flex;flex-direction:column;gap:14px}
+    .thumb{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:20px;border:1px solid var(--soft);background:rgba(255,255,255,.04)}
+    .tag{display:inline-flex;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.06);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#ddd}
+    .item h2{font-size:22px;line-height:1.2;letter-spacing:-.03em}
+    .item p,.meta{color:var(--muted);font-size:15px;line-height:1.7}
+    .item a.read{margin-top:auto;color:#fff;text-decoration:none;font-weight:700}
+    @media(max-width:1000px){.grid{grid-template-columns:1fr}} @media(max-width:760px){body{padding:16px}.nav{flex-direction:column;align-items:flex-start}.hero,.card{padding:24px}}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="nav">
+      <div class="brand"><span class="green">Flow</span><span class="purple">Bridge</span></div>
+      <nav class="menu">
+        <a href="/index.html">Home</a>
+        <a href="/insights/" class="active">Insights</a>
+        <a href="/resources/">Resources</a>
+        <a href="/services.html">Services</a>
+        <a href="/about.html">About</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow">Insight Library</div>
+      <h1>Landing pages, offer ideas, and promotion-focused insights.</h1>
+      <p class="lead">Use this section to publish HTML-based landing pages and supporting insight pages. Add new entries from your CMS and they’ll appear here automatically after deployment.</p>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Latest insight pages</h2>
+      <div class="grid">
+        {% assign items = site.insights | sort: "date" | reverse %}
+        {% for item in items %}
+        <article class="item">
+          {% if item.cover_image %}<img class="thumb" src="{{ item.cover_image }}" alt="{{ item.title }}">{% endif %}
+          <span class="tag">{{ item.insight_type | default: "Insight" }}</span>
+          <h2>{{ item.title }}</h2>
+          <div class="meta">{{ item.date | date: "%b %d, %Y" }}</div>
+          <p>{{ item.excerpt }}</p>
+          <a class="read" href="{{ item.url }}">Open page →</a>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+</body>
+</html>
