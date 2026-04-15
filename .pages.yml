@@ -19,7 +19,7 @@ content:
     path: _resources
     filename: "{fields.title}.md"
     view:
-      fields: [title, resource_type, date]
+      fields: [title, section, category, resource_type, date]
     fields:
       - name: title
         label: Title
@@ -29,9 +29,18 @@ content:
         label: Publish date
         type: date
         required: true
+      - name: section
+        label: Section
+        type: select
+        required: true
+        options:
+          values: [Learning, Resource Hub]
       - name: category
         label: Category
-        type: string
+        type: select
+        required: true
+        options:
+          values: [Getting Started, Approval and Setup, Traffic and Content, E-books, Landing Pages, Tutorials]
       - name: resource_type
         label: Resource type
         type: select
