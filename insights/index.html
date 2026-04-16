@@ -14,26 +14,62 @@ permalink: /insights/
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
-    :root{--text:#f4f4f8;--muted:rgba(255,255,255,.74);--green:#a8f03d;--purple:#aa78ff;--soft:rgba(255,255,255,.12);--nav:rgba(13,10,32,.78);--card:linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03)), linear-gradient(180deg, rgba(22,18,52,.88), rgba(11,14,34,.94));}
-    body{font-family:"Inter",sans-serif;color:var(--text);padding:22px;background:linear-gradient(180deg,#02030b 0%, #04061a 45%, #02030b 100%)}
-    .page{max-width:1320px;margin:0 auto}.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 24px;margin-bottom:30px;border-radius:24px;background:var(--nav);border:1px solid rgba(255,255,255,.10)}
+    :root{
+      --text:#f4f4f8;--muted:rgba(255,255,255,.76);--green:#a8f03d;--purple:#aa78ff;
+      --nav:rgba(13,10,32,.78);--soft:rgba(255,255,255,.12);
+      --panel:linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03)), linear-gradient(180deg, rgba(22,18,52,.88), rgba(11,14,34,.94));
+      --panel-2:linear-gradient(135deg, rgba(160,104,255,.14), rgba(255,255,255,.03)), linear-gradient(180deg, rgba(34,22,70,.94), rgba(11,14,34,.96));
+      --shadow:0 18px 48px rgba(0,0,0,.24);
+    }
+    body{
+      font-family:"Inter",sans-serif;color:var(--text);padding:22px;overflow-x:hidden;
+      background:
+        radial-gradient(circle at 16% 15%, rgba(125,55,214,.20), transparent 24%),
+        radial-gradient(circle at 84% 22%, rgba(168,240,61,.08), transparent 22%),
+        linear-gradient(180deg,#02030b 0%, #04061a 45%, #02030b 100%);
+    }
+    .page{position:relative;max-width:1320px;margin:0 auto}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 24px;margin-bottom:30px;border-radius:24px;background:var(--nav);border:1px solid rgba(255,255,255,.10);backdrop-filter:blur(16px);box-shadow:var(--shadow)}
     .brand{font-size:22px;font-weight:800;letter-spacing:-.03em}.green{color:var(--green)}.purple{color:var(--purple)}
     .menu{display:flex;gap:16px;flex-wrap:wrap}.menu a{text-decoration:none;color:rgba(255,255,255,.88);font-size:15px;font-weight:600;padding:10px 14px;border-radius:999px}.menu a.active,.menu a:hover{background:rgba(255,255,255,.06);color:#fff}
-    .hero,.shell,.expand{background:var(--card);border:1px solid var(--soft);box-shadow:0 18px 48px rgba(0,0,0,.24)}
-    .hero{padding:38px;border-radius:34px;margin-bottom:26px}.eyebrow{display:inline-flex;padding:8px 14px;border-radius:999px;background:linear-gradient(180deg, rgba(168,240,61,.12), rgba(170,120,255,.12));border:1px solid rgba(168,240,61,.22);color:#d5f7a4;font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-bottom:16px}
-    h1{font-size:clamp(40px,5vw,74px);line-height:.95;letter-spacing:-.06em;margin-bottom:16px;max-width:860px}.lead{max-width:760px;color:var(--muted);font-size:18px;line-height:1.8}
-    .shell{padding:30px;border-radius:34px;margin-bottom:24px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:20px}.section-head h2{font-size:30px;letter-spacing:-.04em}.section-head p{max-width:620px;color:var(--muted);line-height:1.7}
-    .category-grid,.post-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .category-card,.post-card{display:flex;flex-direction:column;gap:14px;padding:22px;border-radius:24px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.045);text-decoration:none;color:inherit;transition:transform .2s ease,border-color .2s ease}
-    .category-card{cursor:pointer;background:linear-gradient(180deg, rgba(113,104,255,.18), rgba(109,180,255,.09))}
-    .category-card:hover,.post-card:hover{transform:translateY(-2px);border-color:rgba(168,240,61,.28)}
-    .chip{display:inline-flex;align-items:center;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.10);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#eef1f8}
-    .preview-list{display:grid;gap:10px}.preview-item{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:16px;background:rgba(7,10,22,.25);border:1px solid rgba(255,255,255,.08)}
-    .preview-thumb,.post-thumb{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);object-fit:cover}
-    .preview-thumb{width:48px;height:48px;border-radius:12px;flex:0 0 auto}.post-thumb{width:100%;aspect-ratio:16/10;border-radius:18px}
-    .preview-item span{display:block;color:#fff;font-weight:600;font-size:14px;line-height:1.35}.preview-item small{display:block;color:var(--muted);margin-top:4px}
-    .expand{display:none;padding:28px;border-radius:28px;margin-top:18px}.expand.active{display:block}.expand-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}.expand-top h3{font-size:28px;letter-spacing:-.04em}.expand-top p,.post-card p{color:var(--muted);line-height:1.7}.btn-lite{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:#fff;border-radius:999px;padding:10px 14px;font-weight:700;cursor:pointer}.post-card h4{font-size:20px;line-height:1.2;letter-spacing:-.03em}.post-meta{display:flex;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:13px}.cta-line{margin-top:auto;color:#fff;font-weight:700}.empty{padding:20px;border-radius:18px;background:rgba(255,255,255,.04);border:1px dashed rgba(255,255,255,.14);color:var(--muted)}
-    @media(max-width:1100px){.category-grid,.post-grid{grid-template-columns:1fr 1fr}} @media(max-width:760px){body{padding:16px}.nav,.section-head,.expand-top{flex-direction:column;align-items:flex-start}.hero,.shell,.expand{padding:22px}.category-grid,.post-grid{grid-template-columns:1fr}}
+    .hero,.shell,.empty,.details-card{background:var(--panel);border:1px solid var(--soft);box-shadow:var(--shadow)}
+    .hero{padding:42px;border-radius:34px;margin-bottom:28px;overflow:hidden;position:relative}
+    .hero::after{content:"";position:absolute;right:-70px;bottom:-70px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle, rgba(170,120,255,.18), transparent 70%);filter:blur(10px)}
+    .eyebrow{display:inline-flex;padding:8px 14px;border-radius:999px;background:linear-gradient(180deg, rgba(168,240,61,.12), rgba(170,120,255,.12));border:1px solid rgba(168,240,61,.22);color:#d5f7a4;font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:18px}
+    h1{font-size:clamp(42px,5vw,74px);line-height:.96;letter-spacing:-.06em;max-width:920px;margin-bottom:18px}
+    .lead{max-width:860px;font-size:18px;line-height:1.8;color:var(--muted)}
+    .shell{padding:26px;border-radius:30px;margin-top:28px;background:var(--panel-2)}
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:20px}
+    .section-title{font-size:26px;letter-spacing:-.03em}
+    .section-copy{color:var(--muted);font-size:15px;line-height:1.7;max-width:720px}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    details.details-card{border-radius:24px;overflow:hidden}
+    .card-summary{list-style:none;cursor:pointer;padding:22px;background:rgba(255,255,255,.03)}
+    .card-summary::-webkit-details-marker{display:none}
+    .card-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:12px}
+    .card-title{font-size:22px;letter-spacing:-.03em}
+    .pill{display:inline-flex;align-items:center;padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.08);font-size:12px;font-weight:700;color:#fff}
+    .preview-list{display:grid;gap:12px;margin-top:16px}
+    .preview-item{display:grid;grid-template-columns:74px 1fr;gap:12px;align-items:center;padding:12px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
+    .preview-image{width:74px;height:60px;border-radius:14px;object-fit:cover;background:rgba(255,255,255,.04)}
+    .preview-item h3{font-size:15px;line-height:1.3;margin-bottom:6px}
+    .preview-item p{font-size:13px;line-height:1.55;color:var(--muted)}
+    .summary-note{margin-top:14px;font-size:13px;color:#d8c6ff}
+    .card-expand{padding:0 22px 22px}
+    .expanded-list{display:grid;gap:14px}
+    .expanded-item{display:grid;grid-template-columns:110px 1fr auto;gap:16px;align-items:center;padding:14px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
+    .expanded-image{width:110px;height:78px;border-radius:16px;object-fit:cover;background:rgba(255,255,255,.04)}
+    .expanded-item h4{font-size:16px;line-height:1.35;margin-bottom:6px}
+    .expanded-item p{font-size:14px;line-height:1.65;color:var(--muted)}
+    .meta{font-size:12px;color:#d8c6ff;margin-bottom:4px}
+    .link-btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;padding:12px 16px;border-radius:999px;font-weight:700;font-size:14px;background:linear-gradient(90deg,#a5f03f 0%,#cfb7ff 100%);color:#1d2417;white-space:nowrap}
+    .empty{padding:24px;border-radius:24px}
+    .empty h3{font-size:20px;margin-bottom:8px}.empty p{font-size:15px;line-height:1.7;color:var(--muted)}
+    .empty-page{padding:28px;border-radius:28px;margin-top:28px;text-align:center}
+    .empty-page h2{font-size:28px;letter-spacing:-.03em;margin-bottom:10px}
+    .empty-page p{max-width:760px;margin:0 auto;color:var(--muted);line-height:1.8}
+    @media(max-width:1080px){.grid{grid-template-columns:1fr}.expanded-item{grid-template-columns:92px 1fr}.link-btn{grid-column:2 / -1;justify-self:start}}
+    @media(max-width:760px){body{padding:16px}.nav{flex-direction:column;align-items:flex-start}.hero,.shell{padding:22px;border-radius:24px}.card-summary,.card-expand{padding:18px}.preview-item,.expanded-item{grid-template-columns:1fr}.preview-image,.expanded-image{width:100%;height:170px}}
   </style>
 </head>
 <body>
@@ -41,104 +77,90 @@ permalink: /insights/
     <header class="nav">
       <div class="brand"><span class="green">Flow</span><span class="purple">Bridge</span></div>
       <nav class="menu">
-        <a href="{{ '/index.html' | relative_url }}">Home</a>
-        <a href="{{ '/insights/' | relative_url }}" class="active">Insights</a>
-        <a href="{{ '/resources/' | relative_url }}">Resources</a>
-        <a href="{{ '/services.html' | relative_url }}">Services</a>
-        <a href="{{ '/about.html' | relative_url }}">About</a>
+        <a href="../index.html">Home</a>
+        <a href="../insights/" class="active">Insights</a>
+        <a href="../resources/">Resources</a>
+        <a href="../services.html">Services</a>
+        <a href="../about.html">About</a>
       </nav>
     </header>
 
-    {% assign all_insights = site.insights | sort: 'date' | reverse %}
-    {% assign insight_groups = 'Landing Page|Offer Page|Insight' | split: '|' %}
-
     <section class="hero">
-      <div class="eyebrow">Insight Library</div>
-      <h1>Organized insight sections for pages, offers, and strategy ideas.</h1>
-      <p class="lead">The Insights area now uses cleaner grouping. Each type gets a strong preview card, and clicking a card expands the full set of entries inside the same page for a smoother browsing experience.</p>
+      <div class="eyebrow">Landing pages, ideas and promotional structures</div>
+      <h1>Insight categories that appear only when you publish.</h1>
+      <p class="lead">Use this page for insight posts, promotional angles, landing-page concepts, or full offer-page writeups. Each category becomes its own expandable block, so your structure can grow naturally from Pages CMS instead of being hardcoded upfront.</p>
     </section>
 
-    <section class="shell">
-      <div class="section-head">
-        <div>
-          <div class="eyebrow">Grouped views</div>
-          <h2>Browse by insight type</h2>
-        </div>
-        <p>Use this page for landing pages, offer pages, and strategy writeups. Add entries from Pages CMS and place them in the correct type so they automatically fall into the right section.</p>
-      </div>
+    {% assign insights_sorted = site.insights | sort: 'date' | reverse %}
+    {% assign insight_categories = insights_sorted | map: "category" | uniq %}
 
-      <div class="category-grid">
-        {% for type_name in insight_groups %}
-        {% assign matching = all_insights | where: 'insight_type', type_name %}
-        {% assign slug = type_name | slugify %}
-        <button class="category-card" type="button" data-target="insight-{{ slug }}">
-          <span class="chip">{{ type_name }}</span>
-          <h3>{{ type_name }}</h3>
-          <p>{{ matching.size }} item{% if matching.size != 1 %}s{% endif %} available.</p>
-          <div class="preview-list">
-            {% for item in matching limit:3 %}
-            <div class="preview-item">
-              {% if item.cover_image %}<img class="preview-thumb" src="{{ item.cover_image | relative_url }}" alt="{{ item.title }}">{% else %}<div class="preview-thumb"></div>{% endif %}
-              <div><span>{{ item.title }}</span><small>{{ item.date | date: "%b %d, %Y" }}</small></div>
-            </div>
-            {% endfor %}
-            {% if matching.size == 0 %}<div class="empty">Add entries with the type <strong>{{ type_name }}</strong> and they will appear here.</div>{% endif %}
-          </div>
-        </button>
-        {% endfor %}
-      </div>
-
-      {% for type_name in insight_groups %}
-      {% assign matching = all_insights | where: 'insight_type', type_name %}
-      {% assign slug = type_name | slugify %}
-      <div class="expand" id="insight-{{ slug }}">
-        <div class="expand-top">
+    {% if insights_sorted.size > 0 %}
+      <section class="shell">
+        <div class="section-head">
           <div>
-            <div class="eyebrow">Expanded group</div>
-            <h3>{{ type_name }}</h3>
-            <p>All entries in this insight type.</p>
+            <div class="eyebrow">Dynamic insight groups</div>
+            <h2 class="section-title">Published categories</h2>
           </div>
-          <button class="btn-lite" type="button" data-close="insight-{{ slug }}">Close</button>
+          <p class="section-copy">Create any category name you want in Pages CMS. FlowBridge will automatically group entries, show the latest previews, and let visitors expand the category to browse everything on one page.</p>
         </div>
-        <div class="post-grid">
-          {% for item in matching %}
-          <a class="post-card" href="{{ item.url | relative_url }}">
-            {% if item.cover_image %}<img class="post-thumb" src="{{ item.cover_image | relative_url }}" alt="{{ item.title }}">{% endif %}
-            <div class="post-meta"><span>{{ item.insight_type }}</span><span>•</span><span>{{ item.date | date: "%b %d, %Y" }}</span></div>
-            <h4>{{ item.title }}</h4>
-            <p>{{ item.excerpt }}</p>
-            <div class="cta-line">Open page →</div>
-          </a>
-          {% endfor %}
-          {% if matching.size == 0 %}<div class="empty">No entries here yet. Add some from Pages CMS.</div>{% endif %}
-        </div>
-      </div>
-      {% endfor %}
-    </section>
-  </div>
 
-  <script>
-    const sections = document.querySelectorAll('.expand');
-    document.querySelectorAll('[data-target]').forEach(button => {
-      button.addEventListener('click', () => {
-        const targetId = button.getAttribute('data-target');
-        sections.forEach(section => {
-          if (section.id === targetId) {
-            const open = section.classList.contains('active');
-            sections.forEach(s => s.classList.remove('active'));
-            if (!open) {
-              section.classList.add('active');
-              section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-          }
-        });
-      });
-    });
-    document.querySelectorAll('[data-close]').forEach(button => {
-      button.addEventListener('click', () => {
-        document.getElementById(button.getAttribute('data-close'))?.classList.remove('active');
-      });
-    });
-  </script>
+        <div class="grid">
+          {% for category in insight_categories %}
+            {% if category != blank %}
+              {% assign category_items = insights_sorted | where: "category", category %}
+              <details class="details-card">
+                <summary class="card-summary">
+                  <div class="card-top">
+                    <h3 class="card-title">{{ category }}</h3>
+                    <span class="pill">{{ category_items.size }} items</span>
+                  </div>
+                  <div class="preview-list">
+                    {% for item in category_items limit:3 %}
+                      <div class="preview-item">
+                        {% if item.cover_image %}
+                          <img class="preview-image" src="{{ item.cover_image | relative_url }}" alt="{{ item.title }}">
+                        {% else %}
+                          <div class="preview-image"></div>
+                        {% endif %}
+                        <div>
+                          <h3>{{ item.title }}</h3>
+                          <p>{{ item.excerpt | default: item.content | strip_html | truncate: 95 }}</p>
+                        </div>
+                      </div>
+                    {% endfor %}
+                  </div>
+                  <div class="summary-note">Click to expand this category and open any entry.</div>
+                </summary>
+                <div class="card-expand">
+                  <div class="expanded-list">
+                    {% for item in category_items %}
+                      <article class="expanded-item">
+                        {% if item.cover_image %}
+                          <img class="expanded-image" src="{{ item.cover_image | relative_url }}" alt="{{ item.title }}">
+                        {% else %}
+                          <div class="expanded-image"></div>
+                        {% endif %}
+                        <div>
+                          <div class="meta">{{ item.date | date: "%b %d, %Y" }}{% if item.insight_type %} • {{ item.insight_type }}{% endif %}</div>
+                          <h4>{{ item.title }}</h4>
+                          <p>{{ item.excerpt | default: item.content | strip_html | truncate: 150 }}</p>
+                        </div>
+                        <a class="link-btn" href="{{ item.url | relative_url }}">Open entry</a>
+                      </article>
+                    {% endfor %}
+                  </div>
+                </div>
+              </details>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </section>
+    {% else %}
+      <section class="empty empty-page">
+        <h2>No insights published yet</h2>
+        <p>This page is intentionally empty until you publish your first insight or landing-page entry from Pages CMS. Once you add content, categories and previews will build themselves automatically.</p>
+      </section>
+    {% endif %}
+  </div>
 </body>
 </html>
