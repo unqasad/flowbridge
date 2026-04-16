@@ -15,9 +15,11 @@ permalink: /resources/
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     :root{
-      --text:#f4f4f8;--muted:rgba(255,255,255,.74);--green:#a8f03d;--purple:#aa78ff;
-      --nav:rgba(13,10,32,.78);--soft:rgba(255,255,255,.12);--panel:rgba(255,255,255,.05);
-      --card:linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03)), linear-gradient(180deg, rgba(22,18,52,.88), rgba(11,14,34,.94));
+      --text:#f4f4f8;--muted:rgba(255,255,255,.76);--green:#a8f03d;--purple:#aa78ff;
+      --nav:rgba(13,10,32,.78);--soft:rgba(255,255,255,.12);
+      --panel:linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03)), linear-gradient(180deg, rgba(22,18,52,.88), rgba(11,14,34,.94));
+      --panel-2:linear-gradient(135deg, rgba(85,154,255,.18), rgba(255,255,255,.03)), linear-gradient(180deg, rgba(25,46,88,.94), rgba(11,20,38,.96));
+      --shadow:0 18px 48px rgba(0,0,0,.24);
     }
     html,body{min-height:100%}
     body{
@@ -33,51 +35,56 @@ permalink: /resources/
       radial-gradient(circle at 70% 30%, rgba(92,62,255,.12), transparent 18%);
       filter:blur(80px)}
     .page{position:relative;z-index:1;max-width:1320px;margin:0 auto}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 24px;margin-bottom:30px;border-radius:24px;background:var(--nav);border:1px solid rgba(255,255,255,.10);backdrop-filter:blur(16px)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 24px;margin-bottom:30px;border-radius:24px;background:var(--nav);border:1px solid rgba(255,255,255,.10);backdrop-filter:blur(16px);box-shadow:var(--shadow)}
     .brand{font-size:22px;font-weight:800;letter-spacing:-.03em}.green{color:var(--green)}.purple{color:var(--purple)}
-    .menu{display:flex;gap:16px;flex-wrap:wrap}.menu a{text-decoration:none;color:rgba(255,255,255,.88);font-size:15px;font-weight:600;padding:10px 14px;border-radius:999px;transition:.22s ease}.menu a.active,.menu a:hover{background:rgba(255,255,255,.06);color:#fff}
-    .hero,.shell,.expand{background:var(--card);border:1px solid var(--soft);box-shadow:0 18px 48px rgba(0,0,0,.24)}
-    .hero{padding:38px;border-radius:34px;margin-bottom:26px;overflow:hidden;position:relative}
-    .hero::after{content:"";position:absolute;right:-40px;top:-50px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle, rgba(168,240,61,.16), transparent 70%);filter:blur(8px)}
-    .eyebrow{display:inline-flex;padding:8px 14px;border-radius:999px;background:linear-gradient(180deg, rgba(168,240,61,.12), rgba(170,120,255,.12));border:1px solid rgba(168,240,61,.22);color:#d5f7a4;font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-bottom:16px}
-    h1{font-size:clamp(40px,5vw,74px);line-height:.95;letter-spacing:-.06em;margin-bottom:16px;max-width:860px}
-    .lead{max-width:760px;color:var(--muted);font-size:18px;line-height:1.8}
-    .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
-    .mini{padding:18px 18px 20px;border-radius:22px;background:rgba(255,255,255,.045);border:1px solid var(--soft)}
-    .mini strong{display:block;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:#d5f7a4;margin-bottom:10px}
-    .mini span{font-size:15px;line-height:1.65;color:var(--muted)}
-    .shell{padding:30px;border-radius:34px;margin-bottom:24px}
-    .section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:20px}
-    .section-head h2{font-size:30px;letter-spacing:-.04em}
-    .section-head p{max-width:620px;color:var(--muted);line-height:1.7}
-    .category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .category-card{position:relative;display:flex;flex-direction:column;gap:14px;padding:22px;border-radius:24px;background:linear-gradient(180deg, rgba(109,180,255,.18), rgba(90,145,235,.09));border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);cursor:pointer;transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease}
-    .category-card:hover{transform:translateY(-3px);border-color:rgba(168,240,61,.28);box-shadow:0 18px 30px rgba(0,0,0,.22)}
-    .category-card h3{font-size:24px;letter-spacing:-.03em}
-    .category-card p{color:var(--muted);line-height:1.7}
-    .chip{display:inline-flex;align-items:center;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.10);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#eef1f8}
-    .preview-list{display:grid;gap:10px}
-    .preview-item{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:16px;background:rgba(7,10,22,.25);border:1px solid rgba(255,255,255,.08)}
-    .preview-thumb{width:48px;height:48px;object-fit:cover;border-radius:12px;background:rgba(255,255,255,.06);flex:0 0 auto}
-    .preview-item span{display:block;color:#fff;font-weight:600;line-height:1.35;font-size:14px}
-    .preview-item small{display:block;color:var(--muted);margin-top:4px}
-    .expand{display:none;padding:28px;border-radius:28px;margin-top:18px}
-    .expand.active{display:block}
-    .expand-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
-    .expand-top h3{font-size:28px;letter-spacing:-.04em}
-    .expand-top p{color:var(--muted)}
-    .btn-lite{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:#fff;border-radius:999px;padding:10px 14px;font-weight:700;cursor:pointer}
-    .post-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .post-card{display:flex;flex-direction:column;gap:14px;padding:18px;border-radius:24px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09);text-decoration:none;color:inherit;transition:transform .2s ease,border-color .2s ease}
-    .post-card:hover{transform:translateY(-2px);border-color:rgba(170,120,255,.28)}
-    .post-thumb{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:18px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.05)}
-    .post-card h4{font-size:20px;line-height:1.2;letter-spacing:-.03em}
-    .post-meta{display:flex;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:13px}
-    .post-card p{color:var(--muted);line-height:1.7;font-size:15px}
-    .cta-line{margin-top:auto;color:#fff;font-weight:700}
-    .empty{padding:20px;border-radius:18px;background:rgba(255,255,255,.04);border:1px dashed rgba(255,255,255,.14);color:var(--muted)}
-    @media(max-width:1100px){.summary,.category-grid,.post-grid{grid-template-columns:1fr 1fr}}
-    @media(max-width:760px){body{padding:16px}.nav{flex-direction:column;align-items:flex-start}.hero,.shell,.expand{padding:22px}.summary,.category-grid,.post-grid{grid-template-columns:1fr}.section-head,.expand-top{flex-direction:column;align-items:flex-start}}
+    .menu{display:flex;gap:16px;flex-wrap:wrap}
+    .menu a{position:relative;text-decoration:none;color:rgba(255,255,255,.88);font-size:15px;font-weight:600;padding:10px 14px;border-radius:999px}
+    .menu a.active,.menu a:hover{background:rgba(255,255,255,.06);color:#fff}
+    .hero,.section-shell,.empty,.details-card{background:var(--panel);border:1px solid var(--soft);box-shadow:var(--shadow)}
+    .hero{padding:42px;border-radius:34px;margin-bottom:28px;overflow:hidden;position:relative}
+    .hero::before{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle, rgba(92,62,255,.18), transparent 70%);filter:blur(10px)}
+    .eyebrow{display:inline-flex;padding:8px 14px;border-radius:999px;background:linear-gradient(180deg, rgba(168,240,61,.12), rgba(170,120,255,.12));border:1px solid rgba(168,240,61,.22);color:#d5f7a4;font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:18px}
+    h1{font-size:clamp(42px,5vw,74px);line-height:.96;letter-spacing:-.06em;max-width:920px;margin-bottom:18px}
+    .lead{max-width:860px;font-size:18px;line-height:1.8;color:var(--muted)}
+    .section-shell{padding:26px;border-radius:30px;margin-top:28px}
+    .section-shell.learning{background:var(--panel-2)}
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:20px}
+    .section-title{font-size:26px;letter-spacing:-.03em}
+    .section-copy{color:var(--muted);font-size:15px;line-height:1.7;max-width:720px}
+    .category-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    details.details-card{border-radius:24px;overflow:hidden}
+    details.details-card[open]{border-color:rgba(168,240,61,.20)}
+    .card-summary{list-style:none;cursor:pointer;padding:22px;background:rgba(255,255,255,.03)}
+    .card-summary::-webkit-details-marker{display:none}
+    .card-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:12px}
+    .card-title{font-size:22px;letter-spacing:-.03em}
+    .pill{display:inline-flex;align-items:center;padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.08);font-size:12px;font-weight:700;color:#fff}
+    .preview-list{display:grid;gap:12px;margin-top:16px}
+    .preview-item{display:grid;grid-template-columns:74px 1fr;gap:12px;align-items:center;padding:12px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
+    .preview-image{width:74px;height:60px;border-radius:14px;object-fit:cover;background:rgba(255,255,255,.04)}
+    .preview-item h3{font-size:15px;line-height:1.3;margin-bottom:6px}
+    .preview-item p{font-size:13px;line-height:1.55;color:var(--muted)}
+    .summary-note{margin-top:14px;font-size:13px;color:#d8c6ff}
+    .card-expand{padding:0 22px 22px}
+    .expanded-list{display:grid;gap:14px}
+    .expanded-item{display:grid;grid-template-columns:110px 1fr auto;gap:16px;align-items:center;padding:14px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
+    .expanded-image{width:110px;height:78px;border-radius:16px;object-fit:cover;background:rgba(255,255,255,.04)}
+    .expanded-item h4{font-size:16px;line-height:1.35;margin-bottom:6px}
+    .expanded-item p{font-size:14px;line-height:1.65;color:var(--muted)}
+    .meta{font-size:12px;color:#d8c6ff;margin-bottom:4px}
+    .link-btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;padding:12px 16px;border-radius:999px;font-weight:700;font-size:14px;background:linear-gradient(90deg,#a5f03f 0%,#cfb7ff 100%);color:#1d2417;white-space:nowrap}
+    .empty{padding:24px;border-radius:24px}
+    .empty h3{font-size:20px;margin-bottom:8px}
+    .empty p{font-size:15px;line-height:1.7;color:var(--muted)}
+    .empty-page{padding:28px;border-radius:28px;margin-top:28px;text-align:center}
+    .empty-page h2{font-size:28px;letter-spacing:-.03em;margin-bottom:10px}
+    .empty-page p{max-width:760px;margin:0 auto;color:var(--muted);line-height:1.8}
+    @media(max-width:1080px){.category-grid{grid-template-columns:1fr}.expanded-item{grid-template-columns:92px 1fr}.link-btn{grid-column:2 / -1;justify-self:start}}
+    @media(max-width:760px){
+      body{padding:16px}.nav{flex-direction:column;align-items:flex-start}.hero,.section-shell{padding:22px;border-radius:24px}
+      .card-summary,.card-expand{padding:18px}.preview-item{grid-template-columns:1fr}.preview-image{width:100%;height:150px}
+      .expanded-item{grid-template-columns:1fr}.expanded-image{width:100%;height:180px}
+    }
   </style>
 </head>
 <body>
@@ -85,194 +92,173 @@ permalink: /resources/
     <header class="nav">
       <div class="brand"><span class="green">Flow</span><span class="purple">Bridge</span></div>
       <nav class="menu">
-        <a href="{{ '/index.html' | relative_url }}">Home</a>
-        <a href="{{ '/insights/' | relative_url }}">Insights</a>
-        <a href="{{ '/resources/' | relative_url }}" class="active">Resources</a>
-        <a href="{{ '/services.html' | relative_url }}">Services</a>
-        <a href="{{ '/about.html' | relative_url }}">About</a>
+        <a href="../index.html">Home</a>
+        <a href="../insights/">Insights</a>
+        <a href="../resources/" class="active">Resources</a>
+        <a href="../services.html">Services</a>
+        <a href="../about.html">About</a>
       </nav>
     </header>
 
     <section class="hero">
-      <div class="eyebrow">Resource Library</div>
-      <h1>Structured learning, practical resources, and downloadable tools.</h1>
-      <p class="lead">The Resources area is now organized into category-based sections. Each category shows a quick preview of the first three items. Click any category card to expand it and see every related post or download on the same page.</p>
-      <div class="summary">
-        <div class="mini"><strong>Section 1</strong><span>Learning paths for article-style content, beginner education, setup help, traffic ideas, and growth posts.</span></div>
-        <div class="mini"><strong>Section 2</strong><span>Resource hub for ebooks, templates, tutorials, and downloadable assets.</span></div>
-        <div class="mini"><strong>Better reading flow</strong><span>Cards are clickable, images display properly, and each item links to its full page for reading.</span></div>
-      </div>
+      <div class="eyebrow">Learning, downloads and resource hubs</div>
+      <h1>Structured content that grows as you publish.</h1>
+      <p class="lead">FlowBridge Resources is built to stay clean at the beginning and expand naturally over time. Create posts, tutorials, downloads, e-books, templates, or guides from Pages CMS, and this page will automatically organize them into sections and categories.</p>
     </section>
 
-    {% assign all_resources = site.resources | sort: 'date' | reverse %}
-    {% assign all_posts = site.resources | where: 'resource_type', 'post' | sort: 'date' | reverse %}
-    {% assign all_downloads = site.resources | where: 'resource_type', 'ebook' | sort: 'date' | reverse %}
+    {% assign resources_sorted = site.resources | sort: 'date' | reverse %}
+    {% assign learning_items = resources_sorted | where: "section", "Learning" %}
+    {% assign hub_items = resources_sorted | where: "section", "Resource Hub" %}
 
-    {% assign learn_categories = 'Getting Started|Approval and Setup|Traffic and Content' | split: '|' %}
-    {% assign resource_categories = 'E-books|Landing Pages|Tutorials' | split: '|' %}
+    {% if resources_sorted.size > 0 %}
+      {% assign learning_categories = learning_items | map: "category" | uniq %}
+      {% assign hub_categories = hub_items | map: "category" | uniq %}
 
-    <section class="shell">
-      <div class="section-head">
-        <div>
-          <div class="eyebrow">Section 1</div>
-          <h2>Learn from beginner to advanced</h2>
-        </div>
-        <p>Use this area for post categories. Each category acts like a smart preview panel. Visitors see your first three entries immediately, then open the category to browse everything without leaving the page.</p>
-      </div>
-
-      <div class="category-grid">
-        {% for category_name in learn_categories %}
-        {% assign matching = all_posts | where: 'category', category_name %}
-        {% assign slug = category_name | slugify %}
-        <button class="category-card" type="button" data-target="{{ slug }}">
-          <span class="chip">{{ category_name }}</span>
-          <h3>{{ category_name }}</h3>
-          <p>{{ matching.size }} item{% if matching.size != 1 %}s{% endif %} in this category.</p>
-          <div class="preview-list">
-            {% for item in matching limit:3 %}
-            <div class="preview-item">
-              {% if item.cover_image %}
-              <img class="preview-thumb" src="{{ item.cover_image | relative_url }}" alt="{{ item.title }}">
-              {% else %}
-              <div class="preview-thumb"></div>
-              {% endif %}
-              <div>
-                <span>{{ item.title }}</span>
-                <small>{{ item.date | date: "%b %d, %Y" }}</small>
-              </div>
-            </div>
-            {% endfor %}
-            {% if matching.size == 0 %}
-            <div class="empty">Add posts in the <strong>{{ category_name }}</strong> category from Pages CMS and they will appear here.</div>
-            {% endif %}
-          </div>
-        </button>
-        {% endfor %}
-      </div>
-
-      {% for category_name in learn_categories %}
-      {% assign matching = all_posts | where: 'category', category_name %}
-      {% assign slug = category_name | slugify %}
-      <div class="expand" id="{{ slug }}">
-        <div class="expand-top">
+      <section class="section-shell learning">
+        <div class="section-head">
           <div>
-            <div class="eyebrow">Expanded category</div>
-            <h3>{{ category_name }}</h3>
-            <p>All posts from this category in one place.</p>
+            <div class="eyebrow">Section 1</div>
+            <h2 class="section-title">Learning Library</h2>
           </div>
-          <button class="btn-lite" type="button" data-close="{{ slug }}">Close</button>
+          <p class="section-copy">Use this area for educational content. Each category card previews the latest three entries. Click any card to expand and view all posts from that category on the same page.</p>
         </div>
-        <div class="post-grid">
-          {% for item in matching %}
-          <a class="post-card" href="{{ item.url | relative_url }}">
-            {% if item.cover_image %}<img class="post-thumb" src="{{ item.cover_image | relative_url }}" alt="{{ item.title }}">{% endif %}
-            <div class="post-meta"><span>{{ item.date | date: "%b %d, %Y" }}</span><span>•</span><span>{{ item.category }}</span></div>
-            <h4>{{ item.title }}</h4>
-            <p>{{ item.excerpt }}</p>
-            <div class="cta-line">Read full post →</div>
-          </a>
-          {% endfor %}
-          {% if matching.size == 0 %}<div class="empty">This category is still empty. Add entries from Pages CMS to populate it.</div>{% endif %}
-        </div>
-      </div>
-      {% endfor %}
-    </section>
 
-    <section class="shell">
-      <div class="section-head">
-        <div>
-          <div class="eyebrow">Section 2</div>
-          <h2>Free resources and downloads</h2>
-        </div>
-        <p>Use this area for ebooks, downloadable landing page assets, and tutorial-style resources. The same click-to-expand pattern keeps the page neat while still exposing more content when needed.</p>
-      </div>
-
-      <div class="category-grid">
-        {% for category_name in resource_categories %}
-        {% assign matching = all_resources | where: 'category', category_name %}
-        {% assign slug = category_name | slugify %}
-        <button class="category-card" type="button" data-target="resource-{{ slug }}">
-          <span class="chip">{{ category_name }}</span>
-          <h3>{{ category_name }}</h3>
-          <p>{{ matching.size }} item{% if matching.size != 1 %}s{% endif %} in this resource group.</p>
-          <div class="preview-list">
-            {% for item in matching limit:3 %}
-            <div class="preview-item">
-              {% if item.cover_image %}
-              <img class="preview-thumb" src="{{ item.cover_image | relative_url }}" alt="{{ item.title }}">
-              {% else %}
-              <div class="preview-thumb"></div>
+        {% if learning_items.size > 0 %}
+          <div class="category-grid">
+            {% for category in learning_categories %}
+              {% if category != blank %}
+                {% assign category_items = learning_items | where: "category", category %}
+                <details class="details-card">
+                  <summary class="card-summary">
+                    <div class="card-top">
+                      <h3 class="card-title">{{ category }}</h3>
+                      <span class="pill">{{ category_items.size }} items</span>
+                    </div>
+                    <div class="preview-list">
+                      {% for item in category_items limit:3 %}
+                        <div class="preview-item">
+                          {% if item.cover_image %}
+                            <img class="preview-image" src="{{ item.cover_image | relative_url }}" alt="{{ item.title }}">
+                          {% else %}
+                            <div class="preview-image"></div>
+                          {% endif %}
+                          <div>
+                            <h3>{{ item.title }}</h3>
+                            <p>{{ item.excerpt | default: item.content | strip_html | truncate: 95 }}</p>
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                    <div class="summary-note">Click to expand this category and open any post.</div>
+                  </summary>
+                  <div class="card-expand">
+                    <div class="expanded-list">
+                      {% for item in category_items %}
+                        <article class="expanded-item">
+                          {% if item.cover_image %}
+                            <img class="expanded-image" src="{{ item.cover_image | relative_url }}" alt="{{ item.title }}">
+                          {% else %}
+                            <div class="expanded-image"></div>
+                          {% endif %}
+                          <div>
+                            <div class="meta">{{ item.date | date: "%b %d, %Y" }}{% if item.resource_type %} • {{ item.resource_type }}{% endif %}</div>
+                            <h4>{{ item.title }}</h4>
+                            <p>{{ item.excerpt | default: item.content | strip_html | truncate: 150 }}</p>
+                          </div>
+                          <a class="link-btn" href="{{ item.url | relative_url }}">Open post</a>
+                        </article>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </details>
               {% endif %}
-              <div>
-                <span>{{ item.title }}</span>
-                <small>{{ item.resource_type | capitalize }}</small>
-              </div>
-            </div>
             {% endfor %}
-            {% if matching.size == 0 %}
-            <div class="empty">Add items with the category <strong>{{ category_name }}</strong> to fill this card.</div>
-            {% endif %}
           </div>
-        </button>
-        {% endfor %}
-      </div>
+        {% else %}
+          <div class="empty">
+            <h3>No learning posts yet</h3>
+            <p>When you publish your first educational entry from Pages CMS with the section set to <strong>Learning</strong>, it will appear here automatically.</p>
+          </div>
+        {% endif %}
+      </section>
 
-      {% for category_name in resource_categories %}
-      {% assign matching = all_resources | where: 'category', category_name %}
-      {% assign slug = category_name | slugify %}
-      <div class="expand" id="resource-{{ slug }}">
-        <div class="expand-top">
+      <section class="section-shell">
+        <div class="section-head">
           <div>
-            <div class="eyebrow">Expanded group</div>
-            <h3>{{ category_name }}</h3>
-            <p>Everything in this resource group, shown together.</p>
+            <div class="eyebrow">Section 2</div>
+            <h2 class="section-title">Free resources and downloads</h2>
           </div>
-          <button class="btn-lite" type="button" data-close="resource-{{ slug }}">Close</button>
+          <p class="section-copy">Use this section for e-books, free landing pages, templates, tutorials, or downloadable assets. Add a category name in Pages CMS, and FlowBridge will generate the group automatically.</p>
         </div>
-        <div class="post-grid">
-          {% for item in matching %}
-          {% if item.resource_type == 'ebook' and item.file_url %}
-          <a class="post-card" href="{{ item.file_url | relative_url }}">
-          {% else %}
-          <a class="post-card" href="{{ item.url | relative_url }}">
-          {% endif %}
-            {% if item.cover_image %}<img class="post-thumb" src="{{ item.cover_image | relative_url }}" alt="{{ item.title }}">{% endif %}
-            <div class="post-meta"><span>{{ item.resource_type | capitalize }}</span><span>•</span><span>{{ item.date | date: "%b %d, %Y" }}</span></div>
-            <h4>{{ item.title }}</h4>
-            <p>{{ item.excerpt }}</p>
-            <div class="cta-line">{% if item.resource_type == 'ebook' and item.file_url %}Download resource →{% else %}Open item →{% endif %}</div>
-          </a>
-          {% endfor %}
-          {% if matching.size == 0 %}<div class="empty">This group is empty for now. Add matching items in Pages CMS.</div>{% endif %}
-        </div>
-      </div>
-      {% endfor %}
-    </section>
+
+        {% if hub_items.size > 0 %}
+          <div class="category-grid">
+            {% for category in hub_categories %}
+              {% if category != blank %}
+                {% assign category_items = hub_items | where: "category", category %}
+                <details class="details-card">
+                  <summary class="card-summary">
+                    <div class="card-top">
+                      <h3 class="card-title">{{ category }}</h3>
+                      <span class="pill">{{ category_items.size }} items</span>
+                    </div>
+                    <div class="preview-list">
+                      {% for item in category_items limit:3 %}
+                        <div class="preview-item">
+                          {% if item.cover_image %}
+                            <img class="preview-image" src="{{ item.cover_image | relative_url }}" alt="{{ item.title }}">
+                          {% else %}
+                            <div class="preview-image"></div>
+                          {% endif %}
+                          <div>
+                            <h3>{{ item.title }}</h3>
+                            <p>{{ item.excerpt | default: item.content | strip_html | truncate: 95 }}</p>
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                    <div class="summary-note">Click to expand this category and open any item.</div>
+                  </summary>
+                  <div class="card-expand">
+                    <div class="expanded-list">
+                      {% for item in category_items %}
+                        <article class="expanded-item">
+                          {% if item.cover_image %}
+                            <img class="expanded-image" src="{{ item.cover_image | relative_url }}" alt="{{ item.title }}">
+                          {% else %}
+                            <div class="expanded-image"></div>
+                          {% endif %}
+                          <div>
+                            <div class="meta">{{ item.date | date: "%b %d, %Y" }}{% if item.resource_type %} • {{ item.resource_type }}{% endif %}</div>
+                            <h4>{{ item.title }}</h4>
+                            <p>{{ item.excerpt | default: item.content | strip_html | truncate: 150 }}</p>
+                          </div>
+                          {% if item.file_url %}
+                            <a class="link-btn" href="{{ item.file_url | relative_url }}">{{ item.file_label | default: "Download" }}</a>
+                          {% else %}
+                            <a class="link-btn" href="{{ item.url | relative_url }}">Open item</a>
+                          {% endif %}
+                        </article>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </details>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="empty">
+            <h3>No resource hub items yet</h3>
+            <p>When you publish your first entry from Pages CMS with the section set to <strong>Resource Hub</strong>, it will appear here automatically.</p>
+          </div>
+        {% endif %}
+      </section>
+    {% else %}
+      <section class="empty empty-page">
+        <h2>Nothing has been published yet</h2>
+        <p>This page is intentionally ready-but-empty. Add your first post, tutorial, e-book, or download from Pages CMS and FlowBridge will build the structure for you automatically.</p>
+      </section>
+    {% endif %}
   </div>
-
-  <script>
-    const sections = document.querySelectorAll('.expand');
-    document.querySelectorAll('[data-target]').forEach(button => {
-      button.addEventListener('click', () => {
-        const targetId = button.getAttribute('data-target');
-        sections.forEach(section => {
-          if (section.id === targetId) {
-            const open = section.classList.contains('active');
-            sections.forEach(s => s.classList.remove('active'));
-            if (!open) {
-              section.classList.add('active');
-              section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-          }
-        });
-      });
-    });
-    document.querySelectorAll('[data-close]').forEach(button => {
-      button.addEventListener('click', () => {
-        const targetId = button.getAttribute('data-close');
-        document.getElementById(targetId)?.classList.remove('active');
-      });
-    });
-  </script>
 </body>
 </html>
