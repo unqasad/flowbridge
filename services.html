@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services - FlowBridge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    :root{
+      --text:#f4f4f8;
+      --muted:rgba(255,255,255,0.78);
+      --soft-border:rgba(255,255,255,0.12);
+      --green:#a8f03d;
+      --purple:#aa78ff;
+      --nav-bg:rgba(13,10,32,0.78);
+    }
+
+    html,body{
+      width:100%;
+      min-height:100%;
+      font-family:"Inter",sans-serif;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(125,55,214,0.26), transparent 28%),
+        radial-gradient(circle at 88% 78%, rgba(83,39,177,0.22), transparent 24%),
+        linear-gradient(180deg,#02030b 0%, #04061a 45%, #02030b 100%);
+      color:var(--text);
+    }
+
+    body{
+      position:relative;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:-12%;
+      z-index:0;
+      pointer-events:none;
+      background:
+        radial-gradient(ellipse at 14% 24%, rgba(180,120,255,0.14), transparent 24%),
+        radial-gradient(ellipse at 82% 16%, rgba(126,77,255,0.12), transparent 20%),
+        radial-gradient(ellipse at 70% 72%, rgba(170,120,255,0.12), transparent 22%),
+        radial-gradient(ellipse at 28% 82%, rgba(137,85,255,0.10), transparent 20%);
+      filter:blur(80px);
+    }
+
+    .page{
+      position:relative;
+      z-index:1;
+      max-width:1380px;
+      margin:0 auto;
+      padding:22px 28px 42px;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:18px 24px;
+      margin-bottom:34px;
+      border-radius:24px;
+      background:var(--nav-bg);
+      border:1px solid rgba(255,255,255,0.10);
+      backdrop-filter:blur(16px);
+      box-shadow:
+        0 12px 36px rgba(0,0,0,0.28),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+
+    .brand{
+      font-size:22px;
+      font-weight:800;
+      letter-spacing:-0.03em;
+      white-space:nowrap;
+    }
+
+    .brand .green{ color:var(--green); }
+    .brand .purple{ color:var(--purple); }
+
+    .menu{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .menu a{
+      position:relative;
+      text-decoration:none;
+      color:rgba(255,255,255,0.88);
+      font-size:15px;
+      font-weight:600;
+      padding:12px 18px;
+      border-radius:999px;
+      transition:all .25s ease;
+    }
+
+    .menu a::after{
+      content:"";
+      position:absolute;
+      left:18px;
+      right:18px;
+      bottom:9px;
+      height:2px;
+      border-radius:999px;
+      background:linear-gradient(90deg,var(--green),var(--purple));
+      transform:scaleX(0);
+      transform-origin:left;
+      transition:transform .25s ease;
+    }
+
+    .menu a:hover{
+      color:#fff;
+      transform:translateY(-1px);
+      background:rgba(255,255,255,0.06);
+      box-shadow:0 8px 18px rgba(0,0,0,0.22);
+    }
+
+    .menu a:hover::after,
+    .menu a.active::after{
+      transform:scaleX(1);
+    }
+
+    .menu a.active{
+      color:#fff;
+      background:linear-gradient(180deg, rgba(168,240,61,0.14), rgba(170,120,255,0.14));
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      padding:42px 42px 48px;
+      border-radius:36px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)),
+        linear-gradient(180deg, rgba(22,18,52,0.84), rgba(11,14,34,0.92));
+      border:1px solid var(--soft-border);
+      box-shadow:
+        0 18px 48px rgba(0,0,0,0.24),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      left:-80px;
+      bottom:-80px;
+      width:260px;
+      height:260px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(170,120,255,0.16), transparent 70%);
+      filter:blur(12px);
+      pointer-events:none;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      right:-60px;
+      top:-60px;
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(92,62,255,0.14), transparent 70%);
+      filter:blur(12px);
+      pointer-events:none;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      padding:10px 16px;
+      margin-bottom:24px;
+      border-radius:999px;
+      background:linear-gradient(180deg, rgba(168,240,61,0.12), rgba(170,120,255,0.12));
+      border:1px solid rgba(168,240,61,0.22);
+      color:#d5f7a4;
+      font-size:14px;
+      font-weight:800;
+      letter-spacing:0.04em;
+      text-transform:uppercase;
+    }
+
+    h1{
+      font-size:clamp(48px, 5vw, 82px);
+      line-height:0.96;
+      letter-spacing:-0.06em;
+      max-width:980px;
+      margin-bottom:24px;
+    }
+
+    .lead{
+      max-width:860px;
+      font-size:19px;
+      line-height:1.85;
+      color:var(--muted);
+      margin-bottom:34px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:22px;
+      margin-top:10px;
+    }
+
+    .card{
+      position:relative;
+      overflow:hidden;
+      min-height:280px;
+      padding:28px 28px 30px;
+      border-radius:28px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025)),
+        linear-gradient(180deg, rgba(22,18,52,0.72), rgba(11,14,34,0.92));
+      border:1px solid rgba(255,255,255,0.10);
+      box-shadow:
+        0 16px 34px rgba(0,0,0,0.18),
+        inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+
+    .icon{
+      font-size:28px;
+      margin-bottom:18px;
+      display:inline-block;
+    }
+
+    h2{
+      font-size:20px;
+      line-height:1.25;
+      letter-spacing:-0.03em;
+      margin-bottom:14px;
+    }
+
+    .text{
+      font-size:17px;
+      line-height:1.85;
+      color:var(--muted);
+    }
+
+    .bottom-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+      margin-top:28px;
+    }
+
+    .panel{
+      position:relative;
+      overflow:hidden;
+      padding:30px 30px 32px;
+      border-radius:28px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025)),
+        linear-gradient(180deg, rgba(22,18,52,0.72), rgba(11,14,34,0.92));
+      border:1px solid rgba(255,255,255,0.10);
+      box-shadow:
+        0 16px 34px rgba(0,0,0,0.18),
+        inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+
+    .list{
+      display:grid;
+      gap:14px;
+      margin-top:8px;
+    }
+
+    .list div{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      font-size:16px;
+      line-height:1.75;
+      color:var(--muted);
+    }
+
+    .dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      margin-top:9px;
+      flex:0 0 auto;
+      background:linear-gradient(135deg,var(--green),var(--purple));
+      box-shadow:0 0 12px rgba(170,120,255,0.35);
+    }
+
+    @media (max-width: 1100px){
+      .cards{
+        grid-template-columns:1fr;
+      }
+
+      .bottom-grid{
+        grid-template-columns:1fr;
+      }
+
+      .page{
+        padding:18px 20px 34px;
+      }
+
+      .nav{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    @media (max-width: 720px){
+      .hero{
+        padding:28px 22px 30px;
+        border-radius:24px;
+      }
+
+      .card,
+      .panel{
+        padding:24px 20px 24px;
+        border-radius:22px;
+      }
+
+      .menu{
+        gap:8px;
+      }
+
+      .menu a{
+        padding:10px 14px;
+        font-size:14px;
+      }
+
+      h1{
+        font-size:40px;
+      }
+
+      .lead,
+      .text,
+      .list div{
+        font-size:16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="nav">
+      <div class="brand">
+        <span class="green">Flow</span><span class="purple">Bridge</span>
+      </div>
+
+      <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="insights/">Insights</a>
+        <a href="resources/">Resources</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="about.html">About</a>
+      </nav>
+    </header>
+
+    <main class="hero">
+      <div class="badge">What We Offer</div>
+
+      <h1>Focused platform offerings designed to support digital opportunity discovery and growth.</h1>
+
+      <p class="lead">
+        FlowBridge provides structured content, curated insights, and educational
+        resources that help users explore CPA marketing, affiliate opportunities,
+        and practical online growth strategies with greater clarity and confidence.
+      </p>
+
+      <section class="cards">
+        <article class="card">
+          <div class="icon">📊</div>
+          <h2>Insights &amp; Promotions</h2>
+          <p class="text">
+            Access focused insight categories built around opportunity discovery,
+            curated report previews, and promotion-related content designed to
+            highlight useful digital marketing directions.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="icon">📚</div>
+          <h2>Resources &amp; Guides</h2>
+          <p class="text">
+            Explore valuable articles, learning materials, and beginner-friendly
+            guides that help users better understand CPA marketing, affiliate
+            concepts, and practical growth ideas.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="icon">🚀</div>
+          <h2>Growth Support Content</h2>
+          <p class="text">
+            Discover practical content that simplifies online marketing concepts
+            and helps users build stronger understanding around performance,
+            strategy, and opportunity-based promotion.
+          </p>
+        </article>
+      </section>
+
+      <section class="bottom-grid">
+        <div class="panel">
+          <h2>How our platform helps users</h2>
+          <p class="text">
+            Our offerings are designed to help users discover opportunities faster,
+            learn in a more structured way, and access useful information that
+            supports better decisions across digital and affiliate marketing paths.
+          </p>
+        </div>
+
+        <div class="panel">
+          <h2>Who can benefit from FlowBridge</h2>
+          <div class="list">
+            <div><span class="dot"></span><span>Beginners exploring CPA and affiliate marketing</span></div>
+            <div><span class="dot"></span><span>Users looking for curated report-style opportunities</span></div>
+            <div><span class="dot"></span><span>Readers seeking helpful educational content</span></div>
+            <div><span class="dot"></span><span>Marketers interested in practical growth ideas</span></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

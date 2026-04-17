@@ -1,0 +1,24 @@
+Replace your repository with the contents of this package.
+
+After upload, your repository root should show:
+- .pages.yml
+- _config.yml
+- _layouts/
+- _resources/
+- _insights/
+- assets/
+- downloads/
+- insights/
+- resources/
+- templates/
+- index.html
+- about.html
+- services.html
+- Gemfile
+- netlify.toml
+
+Then in GitHub:
+Settings -> Pages
+Source: Deploy from a branch
+Branch: main
+Folder: /(root)
