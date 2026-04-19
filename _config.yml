@@ -1,0 +1,16 @@
+title: FlowBridge
+description: Bridging Ideas and Results
+baseurl: ""
+url: ""
+markdown: kramdown
+permalink: pretty
+collections:
+  blog:
+    output: true
+    permalink: /blog/:name/
+defaults:
+  - scope:
+      path: ""
+      type: blog
+    values:
+      layout: blog

@@ -1,0 +1,24 @@
+Replace your repository with the contents of this package.
+
+After upload, your repository root should show:
+- .pages.yml
+- _config.yml
+- _layouts/
+- _blog/
+- assets/
+- blog/
+- index.html
+- about.html
+- services.html
+- README.md
+
+Then in GitHub:
+Settings -> Pages
+Source: Deploy from a branch
+Branch: main
+Folder: /(root)
+
+Important:
+- Delete the old insights/ folder
+- Delete the old resources/ folder
+- Delete any _insights/ or _resources/ folders
