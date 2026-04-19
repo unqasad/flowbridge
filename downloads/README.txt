@@ -1,1 +1,0 @@
-Place ebooks and downloadable files here. Update the CMS entry's file_url to match the final file path.
