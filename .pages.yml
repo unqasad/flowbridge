@@ -1,0 +1,51 @@
+media:
+  - name: images
+    label: Images
+    input: assets/images
+    output: /assets/images
+    categories: [image]
+    rename: true
+
+content:
+  - name: blog
+    label: Blog
+    type: collection
+    path: _blog
+    filename: "{fields.title}.md"
+    view:
+      fields: [title, category, date]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Publish date
+        type: date
+        required: true
+      - name: category
+        label: Category
+        type: string
+      - name: cover_image
+        label: Cover image
+        type: image
+        options:
+          media: images
+      - name: excerpt
+        label: Short excerpt
+        type: text
+      - name: body
+        label: Content
+        type: rich-text
+        options:
+          format: html
+          media: images
+          switcher: true
+
+settings:
+  commit:
+    templates:
+      create: "Create {path} via Pages CMS"
+      update: "Update {path} via Pages CMS"
+      delete: "Delete {path} via Pages CMS"
+      rename: "Rename {oldPath} to {newPath} via Pages CMS"
